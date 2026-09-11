@@ -30,7 +30,7 @@
 
   --text-title: clamp(1.6rem, 1.2rem + 1.6vw, 2.15rem);
   --transition: 160ms ease;
-  --header-offset: 5.5rem;
+  --header-offset: 4.75rem;
 }
 
 :root[data-theme='dark'] {

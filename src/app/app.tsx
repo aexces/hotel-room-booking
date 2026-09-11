@@ -10,7 +10,6 @@ export function App() {
     <PageShell
       eyebrow="Raintech Stay"
       title="Hotel Room Booking"
-      description="Pick your dates and a room. We’ll show the number of nights and the total in Indian rupees."
       actions={<ThemeToggle theme={theme} onToggle={toggleTheme} />}
     >
       <BookingPage />
