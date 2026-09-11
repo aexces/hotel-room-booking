@@ -3,7 +3,7 @@ import {
   canOpenPreviousMonth,
   monthGrid,
   shiftMonth,
-} from './calendar-month.ts'
+} from '../calendar-month.ts'
 
 describe('monthGrid', () => {
   it('starts on Monday and includes the first of the month', () => {

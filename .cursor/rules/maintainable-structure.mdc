@@ -11,6 +11,7 @@ src/
   pages/               # one file (or folder) per route, thin
   features/<name>/     # booking, rooms, guests, auth
     domain/
+      tests/           # one test file per domain module
     application/
     data/
     lib/
@@ -29,4 +30,4 @@ src/
 - Colocate a module’s CSS (or `.module.css`) next to the component. Global tokens only in `src/shared` or `src/index.css`.
 - Public API of a feature is `ui/` + application hooks. Other features import those, not `data/` internals.
 - Keep files under ~200 lines. Split when a screen grows a form, a list, and a summary together.
-- Tests sit beside the unit: `stay-total.test.ts` next to `stay-total.ts`.
+- Tests live in `<layer>/tests/`, named after the unit they cover: `domain/tests/stay.test.ts` for `domain/stay.ts`. Do not mix `*.test.ts` with production files in the same folder.
