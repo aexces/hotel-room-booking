@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# Hotel Room Booking
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + TypeScript + Vite single-page app for the Raintech hotel booking coding test. Dates, nights, and price live in domain functions; the UI only collects a stay and renders the result. Room data is hardcoded — there is no backend.
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Open the URL Vite prints (usually `http://localhost:5173/`).
+
+```bash
+npm test      # night / price / date validation
+npm run build # production typecheck + bundle
+```
+
+## Stack
+
+- React 19
+- TypeScript (strict)
+- Vite 8
+- CSS modules + design tokens (light and dark)
+- Vitest for domain tests
+
+## Sample data
+
+Rooms match the brief (R101–R301). A few existing bookings are generated from today’s date so you can see unavailability:
+
+- **R101** booked starting tomorrow for 3 nights
+- **R201** booked in 7 days
+- **R301** booked in 14 days
+
+## With more time
+
+- Load live availability instead of hardcoded bookings
+- Persist a confirmed reservation
+- Cover the page with component tests
+- Guest and rate rules beyond max occupancy
