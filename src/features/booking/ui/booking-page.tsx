@@ -76,6 +76,7 @@ export function BookingPage() {
           minCheckOut={
             checkIn ? addCalendarDays(checkIn, 1) : addCalendarDays(today, 1)
           }
+          today={today}
           onCheckInChange={handleCheckInChange}
           onCheckOutChange={handleCheckOutChange}
         />

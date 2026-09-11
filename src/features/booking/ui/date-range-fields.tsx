@@ -1,4 +1,5 @@
 import { Field } from '../../../shared/ui/field/field.tsx'
+import { DatePicker } from './date-picker.tsx'
 import styles from './date-range-fields.module.css'
 
 type DateRangeFieldsProps = {
@@ -6,6 +7,7 @@ type DateRangeFieldsProps = {
   checkOut: string
   minCheckIn: string
   minCheckOut: string
+  today: string
   onCheckInChange: (value: string) => void
   onCheckOutChange: (value: string) => void
 }
@@ -15,29 +17,34 @@ export function DateRangeFields({
   checkOut,
   minCheckIn,
   minCheckOut,
+  today,
   onCheckInChange,
   onCheckOutChange,
 }: DateRangeFieldsProps) {
   return (
     <div className={styles.fields}>
       <Field id="check-in" label="Check-in">
-        <input
+        <DatePicker
           id="check-in"
-          type="date"
-          name="checkIn"
+          label="Check-in"
           value={checkIn}
           min={minCheckIn}
-          onChange={(event) => onCheckInChange(event.target.value)}
+          today={today}
+          rangeStart={checkIn}
+          rangeEnd={checkOut}
+          onChange={onCheckInChange}
         />
       </Field>
       <Field id="check-out" label="Check-out">
-        <input
+        <DatePicker
           id="check-out"
-          type="date"
-          name="checkOut"
+          label="Check-out"
           value={checkOut}
           min={minCheckOut}
-          onChange={(event) => onCheckOutChange(event.target.value)}
+          today={today}
+          rangeStart={checkIn}
+          rangeEnd={checkOut}
+          onChange={onCheckOutChange}
         />
       </Field>
     </div>
