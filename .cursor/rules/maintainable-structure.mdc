@@ -1,0 +1,30 @@
+---
+description: Folder layout, naming, and colocation for a maintainable React app
+alwaysApply: true
+---
+
+# Structure
+
+```
+src/
+  app/                 # router, providers, composition root
+  pages/               # one file (or folder) per route, thin
+  features/<name>/     # booking, rooms, guests, auth
+    domain/
+    application/
+    data/
+    ui/
+  shared/
+    ui/                # primitives (Button, Input, Stack)
+    lib/               # dates, money, cn
+    types/
+  assets/
+```
+
+- Feature folders own their UI, hooks, tests, and types. Do not dump everything in `components/` or `utils/`.
+- Files: `kebab-case.ts` / `kebab-case.tsx`. Components: `PascalCase` exports.
+- Name by role: `room-list.tsx`, `use-room-search.ts`, `room-api.ts` — not `helpers.ts` or `data2.ts`.
+- Colocate a module’s CSS (or `.module.css`) next to the component. Global tokens only in `src/shared` or `src/index.css`.
+- Public API of a feature is `ui/` + application hooks. Other features import those, not `data/` internals.
+- Keep files under ~200 lines. Split when a screen grows a form, a list, and a summary together.
+- Tests sit beside the unit: `stay-total.test.ts` next to `stay-total.ts`.

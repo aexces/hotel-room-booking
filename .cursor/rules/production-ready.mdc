@@ -1,0 +1,20 @@
+---
+description: Production-quality defaults — errors, env, a11y, security, performance
+alwaysApply: true
+---
+
+# Production ready
+
+Ship the unhappy path. Every screen that loads data has loading, empty, and error UI.
+
+- Secrets never go in client code or `VITE_*` env vars. Browser env is public.
+- Use `import.meta.env.VITE_*` only for public config (API base URL). Validate it at app startup.
+- Error boundary at the app root. Feature-level recovery for booking/payment failures — do not white-screen.
+- Do not log guest names, emails, payment data, or booking tokens.
+- Route-level `lazy()` + `Suspense` for pages. Images: explicit width/height or `aspect-ratio`, lazy-load below the fold.
+- Forms: disable submit while in-flight, block double-book, show field-level validation.
+- Dates and money: store UTC/ISO and integer minor units (cents) in domain; format only in UI with `Intl`.
+- No `console.log` in committed code. Fail builds on type errors (`tsc -b`); do not use `@ts-ignore`.
+- Accessibility is required: keyboard for date pickers and dialogs, `aria-*` on custom controls, sufficient contrast.
+
+Before calling UI work done: exercise the flow in the browser at mobile and desktop widths, including error and empty states.

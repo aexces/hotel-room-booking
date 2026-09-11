@@ -1,0 +1,18 @@
+---
+description: Mobile-first, fluid, accessible layout rules for UI and CSS
+globs: "**/*.tsx,**/*.css"
+alwaysApply: false
+---
+
+# Responsive design
+
+Mobile-first. Base styles are the small screen; `min-width` media queries add columns and density.
+
+- Layout with flex/grid and fluid widths (`%`, `fr`, `minmax`). Avoid fixed `px` widths for pages, cards, and dialogs.
+- Breakpoints (min-width): `640px` (sm), `768px` (md), `1024px` (lg), `1280px` (xl). Use the same set everywhere.
+- Type and spacing: `clamp()` for headings and hero padding so hotel imagery scales instead of jumping.
+- Touch targets at least `44×44px`. Do not rely on hover-only actions for Book / Filter / Date picker.
+- No horizontal scroll at `320px`. Images: `max-width: 100%; height: auto`. Prefer `aspect-ratio` over intrinsic layout shift.
+- Room grids: `grid-template-columns: 1fr` → `repeat(auto-fit, minmax(16rem, 1fr))`.
+- Respect `prefers-reduced-motion`. Keep focus visible; do not `outline: none` without a replacement.
+- Test booking search, room list, and checkout at ~375px and ~1280px before finishing UI work.

@@ -1,0 +1,26 @@
+---
+description: Apply SOLID when adding or changing TypeScript and React code
+alwaysApply: true
+---
+
+# SOLID
+
+Prefer small, composable units. Do not mix UI, fetching, and booking rules in one file.
+
+- **S** — One reason to change. Split `RoomCard`, `useRoomAvailability`, and `calculateStayTotal` instead of a 200-line component.
+- **O** — Extend by composition (props, wrappers, strategy maps). Do not edit a switch every time a room type or rate rule is added.
+- **L** — Substitutable components must honor the same contract (required props, loading/error behavior). Do not weaken a shared `Button` or `Price` API for one screen.
+- **I** — Narrow props and ports. A calendar should not take a full `Booking` if it only needs `checkIn`/`checkOut`.
+- **D** — UI depends on hooks/ports, not `fetch` or localStorage. Inject adapters at the app composition root.
+
+```tsx
+// ❌ UI owns HTTP + pricing
+function BookButton({ roomId }: { roomId: string }) {
+  return <button onClick={() => fetch(`/api/book`, { method: 'POST', body: roomId })} />
+}
+
+// ✅ UI depends on a use case hook
+function BookButton({ onBook }: { onBook: () => Promise<void> }) {
+  return <button type="button" onClick={() => void onBook()}>Book</button>
+}
+```

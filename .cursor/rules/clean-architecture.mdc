@@ -1,0 +1,28 @@
+---
+description: Clean architecture layers and dependency direction for the hotel booking app
+alwaysApply: true
+---
+
+# Clean Architecture
+
+Dependencies point inward: `ui` → `application` → `domain`. `data` implements domain ports. React components never import axios, `fetch`, or storage directly.
+
+| Layer | Allowed to know | Lives in |
+| --- | --- | --- |
+| Domain | Entities, value objects, ports | `src/features/<feature>/domain` |
+| Application | Use cases, orchestrating domain | `src/features/<feature>/application` |
+| Data | HTTP, storage, DTOs → domain | `src/features/<feature>/data` |
+| UI | Hooks that call use cases | `src/features/<feature>/ui`, `src/pages` |
+| App | Wire adapters into providers | `src/app` |
+
+```
+src/features/booking/domain/stay.ts          # Stay, DateRange, money rules
+src/features/booking/domain/ports.ts         # BookingRepository
+src/features/booking/application/create-booking.ts
+src/features/booking/data/booking-api.ts     # implements BookingRepository
+src/features/booking/ui/booking-form.tsx
+```
+
+- Pages only compose feature UI. No business rules in `pages/` or `App.tsx`.
+- Map API DTOs in `data/`. Domain types never contain `snake_case` transport fields.
+- Side effects (network, storage, navigation) stay in adapters or application services, not in domain functions.

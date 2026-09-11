@@ -1,0 +1,37 @@
+---
+description: Strict TypeScript — no any, explicit domains, safe narrowing
+globs: "**/*.ts,**/*.tsx"
+alwaysApply: false
+---
+
+# TypeScript
+
+`strict`, `noUncheckedIndexedAccess`, and `verbatimModuleSyntax` are on. Match them.
+
+- Ban `any`, `as any`, and double assertions (`as unknown as T`). Type the data or parse it.
+- Use `import type` for type-only imports.
+- Model booking states as discriminated unions, not booleans or stringly types.
+- Prefer `unknown` at boundaries (JSON, events) and narrow with predicates.
+- No `enum`. Use `as const` objects plus a union type (`erasableSyntaxOnly`).
+- Function return types on exported use cases, ports, and mappers. Inference is fine for local UI helpers.
+- Index access is `T | undefined`. Check before use.
+
+```ts
+// ❌
+function total(stay: any) {
+  return stay.nights * stay.room.price
+}
+
+// ✅
+type StayStatus = 'draft' | 'confirmed' | 'cancelled'
+
+function stayTotal(stay: { nights: number; nightlyRate: number }): number {
+  return stay.nights * stay.nightlyRate
+}
+
+function isStayStatus(value: unknown): value is StayStatus {
+  return value === 'draft' || value === 'confirmed' || value === 'cancelled'
+}
+```
+
+Never add `// @ts-expect-error` or `eslint-disable` to hide type errors. Fix the types.

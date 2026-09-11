@@ -1,0 +1,27 @@
+---
+description: React and TypeScript coding practices for readable, testable UI
+globs: "**/*.ts,**/*.tsx"
+alwaysApply: false
+---
+
+# Coding practices
+
+- Functional components only. Named exports for reusable modules; default export only for pages if the router requires it.
+- Extract reusable stateful logic into hooks (`useDebouncedValue`, `useStayRange`). Components render; hooks coordinate.
+- Early returns for loading, empty, and error states. No nested ternaries.
+- Pure functions for money, nights, and availability. They take values in and return values out — no `Date.now()` unless injected.
+- Handle every Promise: `void loadRooms()` or `try/catch` with a user-visible error. Empty `catch` is forbidden.
+- Keys: stable ids (`room.id`), never array index for lists that reorder.
+- Controlled inputs for booking forms. Derive nights from check-in/out; do not store nights as a third source of truth.
+- Accessibility: label every input, use semantic elements (`button`, `nav`, `main`), and meaningful `alt` (empty only for decorative images).
+
+```tsx
+// ❌
+{rooms ? rooms.length ? <List rooms={rooms} /> : 'None' : 'Loading'}
+
+// ✅
+if (isLoading) return <RoomListSkeleton />
+if (error) return <ErrorBanner message={error.message} />
+if (rooms.length === 0) return <EmptyState title="No rooms for those dates" />
+return <RoomList rooms={rooms} />
+```
