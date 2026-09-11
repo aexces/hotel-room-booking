@@ -4,6 +4,8 @@ Single-page React app for the Raintech Software Limited coding test. Guests pick
 
 There is no backend, auth, or payment. Rooms and a few overlapping bookings are hardcoded. Date, night, overlap, and price rules live in pure domain functions — the UI only collects a stay and renders the result.
 
+![Hotel booking page with check-in and check-out dates, an unavailable room, and a selected Deluxe Room](docs/booking.png)
+
 ## Run locally
 
 ```bash
