@@ -13,7 +13,9 @@ src/
     domain/
     application/
     data/
+    lib/
     ui/
+      <component>/     # component + colocated *.module.css
   shared/
     ui/                # primitives (Button, Input, Stack)
     lib/               # dates, money, cn

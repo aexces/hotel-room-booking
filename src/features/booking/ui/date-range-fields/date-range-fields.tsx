@@ -1,5 +1,5 @@
-import { Field } from '../../../shared/ui/field/field.tsx'
-import { DatePicker } from './date-picker.tsx'
+import { Field } from '../../../../shared/ui/field/field.tsx'
+import { DatePicker } from '../date-picker/date-picker.tsx'
 import styles from './date-range-fields.module.css'
 
 type DateRangeFieldsProps = {

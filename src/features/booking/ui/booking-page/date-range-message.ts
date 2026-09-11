@@ -1,4 +1,4 @@
-import type { DateRangeIssue } from '../domain/date-range.ts'
+import type { DateRangeIssue } from '../../domain/date-range.ts'
 
 export function dateRangeMessage(issue: DateRangeIssue): string {
   if (issue === 'missing-check-in') {

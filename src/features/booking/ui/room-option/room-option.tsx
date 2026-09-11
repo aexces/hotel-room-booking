@@ -1,6 +1,6 @@
-import type { Room } from '../domain/room.ts'
-import { formatInr } from '../../../shared/lib/format-inr.ts'
-import { cx } from '../../../shared/lib/cx.ts'
+import type { Room } from '../../domain/room.ts'
+import { formatInr } from '../../../../shared/lib/format-inr.ts'
+import { cx } from '../../../../shared/lib/cx.ts'
 import styles from './room-option.module.css'
 
 type RoomOptionProps = {

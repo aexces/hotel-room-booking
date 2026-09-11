@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import { calendarDayUtc } from '../domain/date-range.ts'
+import { calendarDayUtc } from '../../domain/date-range.ts'
 import {
   canOpenPreviousMonth,
   formatMonthTitle,
@@ -7,9 +7,9 @@ import {
   shiftMonth,
   visibleMonth,
   weekdayLabels,
-} from '../domain/calendar-month.ts'
-import { formatIsoDate } from './format-iso-date.ts'
-import { cx } from '../../../shared/lib/cx.ts'
+} from '../../domain/calendar-month.ts'
+import { formatIsoDate } from '../../lib/format-iso-date.ts'
+import { cx } from '../../../../shared/lib/cx.ts'
 import styles from './date-picker.module.css'
 
 type DatePickerProps = {

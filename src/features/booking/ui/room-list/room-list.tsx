@@ -1,5 +1,5 @@
-import type { Room } from '../domain/room.ts'
-import { RoomOption } from './room-option.tsx'
+import type { Room } from '../../domain/room.ts'
+import { RoomOption } from '../room-option/room-option.tsx'
 import styles from './room-list.module.css'
 
 type RoomListProps = {

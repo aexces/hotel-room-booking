@@ -1,6 +1,6 @@
-import type { Room } from '../domain/room.ts'
-import { formatInr } from '../../../shared/lib/format-inr.ts'
-import { formatIsoDate } from './format-iso-date.ts'
+import type { Room } from '../../domain/room.ts'
+import { formatInr } from '../../../../shared/lib/format-inr.ts'
+import { formatIsoDate } from '../../lib/format-iso-date.ts'
 import styles from './stay-summary.module.css'
 
 type StaySummaryProps = {

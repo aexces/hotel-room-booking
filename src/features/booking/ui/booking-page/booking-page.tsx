@@ -1,19 +1,19 @@
 import { useState } from 'react'
-import { getExistingBookings } from '../data/existing-bookings.ts'
-import { rooms } from '../data/rooms.ts'
+import { getExistingBookings } from '../../data/existing-bookings.ts'
+import { rooms } from '../../data/rooms.ts'
 import {
   addCalendarDays,
   todayIso,
   validateDateRange,
-} from '../domain/date-range.ts'
-import { isRoomBooked } from '../domain/overlap.ts'
-import { nightsBetween, stayTotal } from '../domain/stay.ts'
-import { Alert } from '../../../shared/ui/alert/alert.tsx'
-import { DateRangeFields } from './date-range-fields.tsx'
+} from '../../domain/date-range.ts'
+import { isRoomBooked } from '../../domain/overlap.ts'
+import { nightsBetween, stayTotal } from '../../domain/stay.ts'
+import { Alert } from '../../../../shared/ui/alert/alert.tsx'
+import { DateRangeFields } from '../date-range-fields/date-range-fields.tsx'
 import { dateRangeMessage } from './date-range-message.ts'
-import { GuestFilter } from './guest-filter.tsx'
-import { RoomList } from './room-list.tsx'
-import { StaySummary } from './stay-summary.tsx'
+import { GuestFilter } from '../guest-filter/guest-filter.tsx'
+import { RoomList } from '../room-list/room-list.tsx'
+import { StaySummary } from '../stay-summary/stay-summary.tsx'
 import styles from './booking-page.module.css'
 
 export function BookingPage() {

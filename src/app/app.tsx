@@ -1,7 +1,7 @@
 import { PageShell } from '../shared/ui/page-shell/page-shell.tsx'
 import { ThemeToggle } from '../shared/ui/theme-toggle/theme-toggle.tsx'
 import { useTheme } from '../shared/lib/use-theme.ts'
-import { BookingPage } from '../features/booking/ui/booking-page.tsx'
+import { BookingPage } from '../features/booking/ui/booking-page/booking-page.tsx'
 
 export function App() {
   const { theme, toggleTheme } = useTheme()

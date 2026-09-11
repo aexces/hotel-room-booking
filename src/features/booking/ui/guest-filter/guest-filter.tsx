@@ -1,4 +1,4 @@
-import { Field } from '../../../shared/ui/field/field.tsx'
+import { Field } from '../../../../shared/ui/field/field.tsx'
 import styles from './guest-filter.module.css'
 
 type GuestFilterProps = {
