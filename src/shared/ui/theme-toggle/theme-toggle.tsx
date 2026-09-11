@@ -1,9 +1,9 @@
-import type { Theme } from '../../lib/theme.ts'
+import type { Theme, ThemeOrigin } from '../../lib/theme.ts'
 import styles from './theme-toggle.module.css'
 
 type ThemeToggleProps = {
   theme: Theme
-  onToggle: () => void
+  onToggle: (origin: ThemeOrigin) => void
 }
 
 export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
@@ -13,7 +13,13 @@ export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
     <button
       type="button"
       className={styles.toggle}
-      onClick={onToggle}
+      onClick={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect()
+        onToggle({
+          x: event.clientX || rect.left + rect.width / 2,
+          y: event.clientY || rect.top + rect.height / 2,
+        })
+      }}
       aria-pressed={isDark}
       aria-label={isDark ? 'Switch to light theme' : 'Switch to dark theme'}
     >

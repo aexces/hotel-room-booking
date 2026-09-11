@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react'
+import { flushSync } from 'react-dom'
 import {
   applyTheme,
   readDocumentTheme,
   readStoredTheme,
   resolveTheme,
+  revealTheme,
   systemTheme,
   writeStoredTheme,
   type Theme,
+  type ThemeOrigin,
 } from './theme.ts'
 
-export function useTheme(): { theme: Theme; toggleTheme: () => void } {
+export function useTheme(): {
+  theme: Theme
+  toggleTheme: (origin: ThemeOrigin) => void
+} {
   const [theme, setTheme] = useState<Theme>(() => {
     const fromDocument = readDocumentTheme()
     if (fromDocument) {
@@ -41,11 +47,13 @@ export function useTheme(): { theme: Theme; toggleTheme: () => void } {
     }
   }, [])
 
-  const toggleTheme = (): void => {
-    setTheme((current) => {
-      const next = current === 'dark' ? 'light' : 'dark'
-      writeStoredTheme(next)
-      return next
+  const toggleTheme = (origin: ThemeOrigin): void => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    writeStoredTheme(next)
+    revealTheme(next, origin, () => {
+      flushSync(() => {
+        setTheme(next)
+      })
     })
   }
 
